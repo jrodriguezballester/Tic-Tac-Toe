@@ -30,8 +30,6 @@ Partial Class Form1
         Me.LabelJugador2 = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.InicioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OpcionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.JugarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AyudaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PanelBordeJug2 = New System.Windows.Forms.Panel()
@@ -125,23 +123,10 @@ Partial Class Form1
         '
         'InicioToolStripMenuItem
         '
-        Me.InicioToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpcionesToolStripMenuItem, Me.JugarToolStripMenuItem})
         Me.InicioToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.InicioToolStripMenuItem.Name = "InicioToolStripMenuItem"
         Me.InicioToolStripMenuItem.Size = New System.Drawing.Size(59, 25)
         Me.InicioToolStripMenuItem.Text = "Inicio"
-        '
-        'OpcionesToolStripMenuItem
-        '
-        Me.OpcionesToolStripMenuItem.Name = "OpcionesToolStripMenuItem"
-        Me.OpcionesToolStripMenuItem.Size = New System.Drawing.Size(145, 26)
-        Me.OpcionesToolStripMenuItem.Text = "Opciones"
-        '
-        'JugarToolStripMenuItem
-        '
-        Me.JugarToolStripMenuItem.Name = "JugarToolStripMenuItem"
-        Me.JugarToolStripMenuItem.Size = New System.Drawing.Size(145, 26)
-        Me.JugarToolStripMenuItem.Text = "Jugar"
         '
         'SalirToolStripMenuItem
         '
@@ -209,11 +194,9 @@ Partial Class Form1
     Friend WithEvents PictureBoxJug2 As PictureBox
     Friend WithEvents LabelJugador2 As Label
     Friend WithEvents MenuStrip1 As MenuStrip
-    Friend WithEvents InicioToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents OpcionesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents JugarToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SalirToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AyudaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PanelBordeJug2 As Panel
     Friend WithEvents PanelBordeJug1 As Panel
+    Friend WithEvents InicioToolStripMenuItem As ToolStripMenuItem
 End Class
