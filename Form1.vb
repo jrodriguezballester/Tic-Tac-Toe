@@ -219,7 +219,22 @@ Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
         Me.Controls.Add(PanelJuego)
     End Sub
 
-    Private Sub JugarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles JugarToolStripMenuItem.Click
+
+    Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click
+        Close()
+    End Sub
+
+    Private Sub AyudaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AyudaToolStripMenuItem.Click
+
+        Ayuda.Label_ayuda.Text = "Tic-Tac-Toe version 1.0
+        https://github.com/jrodriguezballester/Tic-Tac-Toe.git
+        Lenguaje: Visual Basic
+        Autor: Jose Rodriguez"
+        Ayuda.Size = New Size(540, 250)
+        Ayuda.Show()
+    End Sub
+
+    Private Sub InicioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InicioToolStripMenuItem.Click
         'poner variables a 0
         Inicializar_datos()
         If IsNothing(PanelJuego) Then
@@ -231,8 +246,6 @@ Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
         cargarJugadores()
         Quien_empieza()
     End Sub
-
-
 
     Private Sub cargarJugadores()
         gamer1_name = "Juan"

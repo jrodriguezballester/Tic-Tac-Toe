@@ -10,4 +10,4 @@ D:\proyectosVB\Tic-Tac-Toe\obj\Debug\Tic-Tac-Toe.vbproj.CoreCompileInputs.cache
 D:\proyectosVB\Tic-Tac-Toe\obj\Debug\Tic-Tac-Toe.exe
 D:\proyectosVB\Tic-Tac-Toe\obj\Debug\Tic-Tac-Toe.xml
 D:\proyectosVB\Tic-Tac-Toe\obj\Debug\Tic-Tac-Toe.pdb
-D:\proyectosVB\Tic-Tac-Toe\obj\Debug\Tic_Tac_Toe.Form2.resources
+D:\proyectosVB\Tic-Tac-Toe\obj\Debug\Tic_Tac_Toe.Ayuda.resources
