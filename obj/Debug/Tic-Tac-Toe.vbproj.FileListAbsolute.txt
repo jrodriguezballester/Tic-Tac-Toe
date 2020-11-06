@@ -1,0 +1,13 @@
+D:\proyectosVB\Tic-Tac-Toe\bin\Debug\Tic-Tac-Toe.exe.config
+D:\proyectosVB\Tic-Tac-Toe\bin\Debug\Tic-Tac-Toe.exe
+D:\proyectosVB\Tic-Tac-Toe\bin\Debug\Tic-Tac-Toe.pdb
+D:\proyectosVB\Tic-Tac-Toe\bin\Debug\Tic-Tac-Toe.xml
+D:\proyectosVB\Tic-Tac-Toe\obj\Debug\Tic-Tac-Toe.vbprojAssemblyReference.cache
+D:\proyectosVB\Tic-Tac-Toe\obj\Debug\Tic_Tac_Toe.Form1.resources
+D:\proyectosVB\Tic-Tac-Toe\obj\Debug\Tic_Tac_Toe.Resources.resources
+D:\proyectosVB\Tic-Tac-Toe\obj\Debug\Tic-Tac-Toe.vbproj.GenerateResource.cache
+D:\proyectosVB\Tic-Tac-Toe\obj\Debug\Tic-Tac-Toe.vbproj.CoreCompileInputs.cache
+D:\proyectosVB\Tic-Tac-Toe\obj\Debug\Tic-Tac-Toe.exe
+D:\proyectosVB\Tic-Tac-Toe\obj\Debug\Tic-Tac-Toe.xml
+D:\proyectosVB\Tic-Tac-Toe\obj\Debug\Tic-Tac-Toe.pdb
+D:\proyectosVB\Tic-Tac-Toe\obj\Debug\Tic_Tac_Toe.Form2.resources
