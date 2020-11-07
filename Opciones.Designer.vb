@@ -28,33 +28,37 @@ Partial Class Opciones
         Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.ButtonImagen2 = New System.Windows.Forms.Button()
+        Me.PictureBoxGamer2 = New System.Windows.Forms.PictureBox()
         Me.TextBoxGamer2_name = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.ButtonImagen1 = New System.Windows.Forms.Button()
+        Me.PictureBoxGamer1 = New System.Windows.Forms.PictureBox()
         Me.TextBoxGamer1_name = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Niveles = New System.Windows.Forms.GroupBox()
+        Me.RadioButton8 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton7 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton9 = New System.Windows.Forms.RadioButton()
         Me.RadioButton6 = New System.Windows.Forms.RadioButton()
         Me.RadioButton5 = New System.Windows.Forms.RadioButton()
         Me.RadioButton4 = New System.Windows.Forms.RadioButton()
         Me.RadioButton3 = New System.Windows.Forms.RadioButton()
         Me.ButtonAceptar = New System.Windows.Forms.Button()
         Me.ButtonCerrar = New System.Windows.Forms.Button()
-        Me.PictureBoxGamer1 = New System.Windows.Forms.PictureBox()
-        Me.PictureBoxGamer2 = New System.Windows.Forms.PictureBox()
         Me.Panel2.SuspendLayout()
-        Me.Panel1.SuspendLayout()
-        Me.Niveles.SuspendLayout()
-        CType(Me.PictureBoxGamer1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBoxGamer2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
+        CType(Me.PictureBoxGamer1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Niveles.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel2
         '
+        Me.Panel2.BackColor = System.Drawing.Color.Transparent
         Me.Panel2.Controls.Add(Me.RadioButton2)
         Me.Panel2.Controls.Add(Me.RadioButton1)
         Me.Panel2.Controls.Add(Me.CheckBox2)
@@ -72,11 +76,12 @@ Partial Class Opciones
         'RadioButton2
         '
         Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RadioButton2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RadioButton2.ForeColor = System.Drawing.SystemColors.ActiveCaption
         Me.RadioButton2.Location = New System.Drawing.Point(240, 60)
         Me.RadioButton2.Margin = New System.Windows.Forms.Padding(4)
         Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(123, 28)
+        Me.RadioButton2.Size = New System.Drawing.Size(160, 33)
         Me.RadioButton2.TabIndex = 6
         Me.RadioButton2.TabStop = True
         Me.RadioButton2.Text = "Ordenador"
@@ -85,11 +90,12 @@ Partial Class Opciones
         'RadioButton1
         '
         Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RadioButton1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RadioButton1.ForeColor = System.Drawing.SystemColors.ActiveCaption
         Me.RadioButton1.Location = New System.Drawing.Point(240, 32)
         Me.RadioButton1.Margin = New System.Windows.Forms.Padding(4)
         Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(104, 28)
+        Me.RadioButton1.Size = New System.Drawing.Size(130, 33)
         Me.RadioButton1.TabIndex = 5
         Me.RadioButton1.TabStop = True
         Me.RadioButton1.Text = "Humano"
@@ -100,11 +106,12 @@ Partial Class Opciones
         Me.CheckBox2.AutoSize = True
         Me.CheckBox2.Checked = True
         Me.CheckBox2.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox2.ForeColor = System.Drawing.SystemColors.ActiveCaption
         Me.CheckBox2.Location = New System.Drawing.Point(45, 314)
         Me.CheckBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(128, 28)
+        Me.CheckBox2.Size = New System.Drawing.Size(139, 28)
         Me.CheckBox2.TabIndex = 4
         Me.CheckBox2.Text = "Por defecto"
         Me.CheckBox2.UseVisualStyleBackColor = True
@@ -120,6 +127,17 @@ Partial Class Opciones
         Me.ButtonImagen2.Text = "Imagen"
         Me.ButtonImagen2.UseVisualStyleBackColor = True
         '
+        'PictureBoxGamer2
+        '
+        Me.PictureBoxGamer2.Image = Global.Tic_Tac_Toe.My.Resources.Resources.O
+        Me.PictureBoxGamer2.Location = New System.Drawing.Point(193, 151)
+        Me.PictureBoxGamer2.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.PictureBoxGamer2.Name = "PictureBoxGamer2"
+        Me.PictureBoxGamer2.Size = New System.Drawing.Size(200, 192)
+        Me.PictureBoxGamer2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBoxGamer2.TabIndex = 2
+        Me.PictureBoxGamer2.TabStop = False
+        '
         'TextBoxGamer2_name
         '
         Me.TextBoxGamer2_name.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -132,27 +150,30 @@ Partial Class Opciones
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.SystemColors.ActiveCaption
         Me.Label3.Location = New System.Drawing.Point(45, 114)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(84, 24)
+        Me.Label3.Size = New System.Drawing.Size(114, 29)
         Me.Label3.TabIndex = 1
         Me.Label3.Text = "Nombre:"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.SystemColors.Highlight
         Me.Label4.Location = New System.Drawing.Point(35, 23)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(120, 29)
+        Me.Label4.Size = New System.Drawing.Size(158, 36)
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "Jugador 2"
         '
         'Panel1
         '
+        Me.Panel1.BackColor = System.Drawing.Color.Transparent
         Me.Panel1.Controls.Add(Me.CheckBox1)
         Me.Panel1.Controls.Add(Me.ButtonImagen1)
         Me.Panel1.Controls.Add(Me.PictureBoxGamer1)
@@ -170,11 +191,12 @@ Partial Class Opciones
         Me.CheckBox1.AutoSize = True
         Me.CheckBox1.Checked = True
         Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox1.ForeColor = System.Drawing.SystemColors.ActiveCaption
         Me.CheckBox1.Location = New System.Drawing.Point(45, 314)
         Me.CheckBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(128, 28)
+        Me.CheckBox1.Size = New System.Drawing.Size(139, 28)
         Me.CheckBox1.TabIndex = 4
         Me.CheckBox1.Text = "Por defecto"
         Me.CheckBox1.UseVisualStyleBackColor = True
@@ -190,6 +212,17 @@ Partial Class Opciones
         Me.ButtonImagen1.Text = "Imagen"
         Me.ButtonImagen1.UseVisualStyleBackColor = True
         '
+        'PictureBoxGamer1
+        '
+        Me.PictureBoxGamer1.Image = Global.Tic_Tac_Toe.My.Resources.Resources.x
+        Me.PictureBoxGamer1.Location = New System.Drawing.Point(193, 151)
+        Me.PictureBoxGamer1.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.PictureBoxGamer1.Name = "PictureBoxGamer1"
+        Me.PictureBoxGamer1.Size = New System.Drawing.Size(200, 192)
+        Me.PictureBoxGamer1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBoxGamer1.TabIndex = 2
+        Me.PictureBoxGamer1.TabStop = False
+        '
         'TextBoxGamer1_name
         '
         Me.TextBoxGamer1_name.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -202,46 +235,87 @@ Partial Class Opciones
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.SystemColors.ActiveCaption
         Me.Label1.Location = New System.Drawing.Point(45, 114)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(84, 24)
+        Me.Label1.Size = New System.Drawing.Size(114, 29)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Nombre:"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.SystemColors.Highlight
         Me.Label2.Location = New System.Drawing.Point(35, 23)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(120, 29)
+        Me.Label2.Size = New System.Drawing.Size(158, 36)
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Jugador 1"
         '
         'Niveles
         '
+        Me.Niveles.Controls.Add(Me.RadioButton8)
+        Me.Niveles.Controls.Add(Me.RadioButton7)
+        Me.Niveles.Controls.Add(Me.RadioButton9)
         Me.Niveles.Controls.Add(Me.RadioButton6)
         Me.Niveles.Controls.Add(Me.RadioButton5)
         Me.Niveles.Controls.Add(Me.RadioButton4)
         Me.Niveles.Controls.Add(Me.RadioButton3)
         Me.Niveles.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Niveles.Location = New System.Drawing.Point(51, 471)
+        Me.Niveles.Location = New System.Drawing.Point(2, 416)
         Me.Niveles.Margin = New System.Windows.Forms.Padding(4)
         Me.Niveles.Name = "Niveles"
         Me.Niveles.Padding = New System.Windows.Forms.Padding(4)
-        Me.Niveles.Size = New System.Drawing.Size(896, 87)
+        Me.Niveles.Size = New System.Drawing.Size(1052, 87)
         Me.Niveles.TabIndex = 8
         Me.Niveles.TabStop = False
         Me.Niveles.Text = "Nivel"
+        '
+        'RadioButton8
+        '
+        Me.RadioButton8.AutoSize = True
+        Me.RadioButton8.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RadioButton8.Location = New System.Drawing.Point(818, 35)
+        Me.RadioButton8.Margin = New System.Windows.Forms.Padding(4)
+        Me.RadioButton8.Name = "RadioButton8"
+        Me.RadioButton8.Size = New System.Drawing.Size(71, 28)
+        Me.RadioButton8.TabIndex = 6
+        Me.RadioButton8.Text = "8 x 8"
+        Me.RadioButton8.UseVisualStyleBackColor = True
+        '
+        'RadioButton7
+        '
+        Me.RadioButton7.AutoSize = True
+        Me.RadioButton7.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RadioButton7.Location = New System.Drawing.Point(660, 37)
+        Me.RadioButton7.Margin = New System.Windows.Forms.Padding(4)
+        Me.RadioButton7.Name = "RadioButton7"
+        Me.RadioButton7.Size = New System.Drawing.Size(71, 28)
+        Me.RadioButton7.TabIndex = 5
+        Me.RadioButton7.Text = "7 x 7"
+        Me.RadioButton7.UseVisualStyleBackColor = True
+        '
+        'RadioButton9
+        '
+        Me.RadioButton9.AutoSize = True
+        Me.RadioButton9.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RadioButton9.Location = New System.Drawing.Point(973, 35)
+        Me.RadioButton9.Margin = New System.Windows.Forms.Padding(4)
+        Me.RadioButton9.Name = "RadioButton9"
+        Me.RadioButton9.Size = New System.Drawing.Size(71, 28)
+        Me.RadioButton9.TabIndex = 4
+        Me.RadioButton9.Text = "9 x 9"
+        Me.RadioButton9.UseVisualStyleBackColor = True
         '
         'RadioButton6
         '
         Me.RadioButton6.AutoSize = True
         Me.RadioButton6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton6.Location = New System.Drawing.Point(768, 37)
+        Me.RadioButton6.Location = New System.Drawing.Point(502, 37)
         Me.RadioButton6.Margin = New System.Windows.Forms.Padding(4)
         Me.RadioButton6.Name = "RadioButton6"
         Me.RadioButton6.Size = New System.Drawing.Size(71, 28)
@@ -253,7 +327,7 @@ Partial Class Opciones
         '
         Me.RadioButton5.AutoSize = True
         Me.RadioButton5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton5.Location = New System.Drawing.Point(515, 37)
+        Me.RadioButton5.Location = New System.Drawing.Point(344, 37)
         Me.RadioButton5.Margin = New System.Windows.Forms.Padding(4)
         Me.RadioButton5.Name = "RadioButton5"
         Me.RadioButton5.Size = New System.Drawing.Size(71, 28)
@@ -265,7 +339,7 @@ Partial Class Opciones
         '
         Me.RadioButton4.AutoSize = True
         Me.RadioButton4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton4.Location = New System.Drawing.Point(259, 37)
+        Me.RadioButton4.Location = New System.Drawing.Point(186, 37)
         Me.RadioButton4.Margin = New System.Windows.Forms.Padding(4)
         Me.RadioButton4.Name = "RadioButton4"
         Me.RadioButton4.Size = New System.Drawing.Size(71, 28)
@@ -309,50 +383,31 @@ Partial Class Opciones
         Me.ButtonCerrar.Text = "Cancelar"
         Me.ButtonCerrar.UseVisualStyleBackColor = True
         '
-        'PictureBoxGamer1
-        '
-        Me.PictureBoxGamer1.Image = Global.Tic_Tac_Toe.My.Resources.Resources.x
-        Me.PictureBoxGamer1.Location = New System.Drawing.Point(193, 151)
-        Me.PictureBoxGamer1.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.PictureBoxGamer1.Name = "PictureBoxGamer1"
-        Me.PictureBoxGamer1.Size = New System.Drawing.Size(200, 192)
-        Me.PictureBoxGamer1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBoxGamer1.TabIndex = 2
-        Me.PictureBoxGamer1.TabStop = False
-        '
-        'PictureBoxGamer2
-        '
-        Me.PictureBoxGamer2.Image = Global.Tic_Tac_Toe.My.Resources.Resources.O
-        Me.PictureBoxGamer2.Location = New System.Drawing.Point(193, 151)
-        Me.PictureBoxGamer2.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.PictureBoxGamer2.Name = "PictureBoxGamer2"
-        Me.PictureBoxGamer2.Size = New System.Drawing.Size(200, 192)
-        Me.PictureBoxGamer2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBoxGamer2.TabIndex = 2
-        Me.PictureBoxGamer2.TabStop = False
-        '
         'Opciones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackgroundImage = Global.Tic_Tac_Toe.My.Resources.Resources.aplicacion
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1056, 650)
         Me.Controls.Add(Me.ButtonCerrar)
         Me.Controls.Add(Me.ButtonAceptar)
         Me.Controls.Add(Me.Niveles)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
+        Me.DoubleBuffered = True
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Opciones"
         Me.Text = "Opciones"
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
+        CType(Me.PictureBoxGamer2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.PictureBoxGamer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Niveles.ResumeLayout(False)
         Me.Niveles.PerformLayout()
-        CType(Me.PictureBoxGamer1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBoxGamer2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -379,4 +434,7 @@ Partial Class Opciones
     Friend WithEvents ButtonAceptar As Button
     Friend WithEvents ButtonCerrar As Button
     Friend WithEvents RadioButton6 As RadioButton
+    Friend WithEvents RadioButton8 As RadioButton
+    Friend WithEvents RadioButton7 As RadioButton
+    Friend WithEvents RadioButton9 As RadioButton
 End Class

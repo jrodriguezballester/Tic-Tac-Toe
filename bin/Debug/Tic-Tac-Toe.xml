@@ -93,14 +93,35 @@ Tic-Tac-Toe
 </member>
 <member name="M:Tic_Tac_Toe.Form1.SalirToolStripMenuItem_Click(System.Object,System.EventArgs)">
  <summary>
+ Salir del juego
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Tic_Tac_Toe.Form1.ContenioToolStripMenuItem_Click(System.Object,System.EventArgs)">
+ <summary>
+ Explicacion juego
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Tic_Tac_Toe.Form1.OpcionesToolStripMenuItem1_Click(System.Object,System.EventArgs)">
+ <summary>
+ Muestra la ventana de Opciones
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Tic_Tac_Toe.Form1.SalirToolStripMenuItem1_Click(System.Object,System.EventArgs)">
+ <summary>
  Salir desde opcion del menu
  </summary>
  <param name="sender"></param>
  <param name="e"></param>
 </member>
-<member name="M:Tic_Tac_Toe.Form1.JugarToolStripMenuItem_Click(System.Object,System.EventArgs)">
+<member name="M:Tic_Tac_Toe.Form1.JugarToolStripMenuItem1_Click(System.Object,System.EventArgs)">
  <summary>
- Inicia el juego si no hay jugadores, nivel los toma por defecto
+  Inicia el juego si no hay jugadores, nivel los toma por defecto
  </summary>
  <param name="sender"></param>
  <param name="e"></param>
@@ -119,13 +140,6 @@ Tic-Tac-Toe
  <summary>
  Redimensiona matriz 
  </summary>
-</member>
-<member name="M:Tic_Tac_Toe.Form1.OpcionesToolStripMenuItem_Click(System.Object,System.EventArgs)">
- <summary>
- Muestra la ventana de Opciones
- </summary>
- <param name="sender"></param>
- <param name="e"></param>
 </member>
 <member name="M:Tic_Tac_Toe.Form1.Quien_empieza">
  <summary>

@@ -12,3 +12,4 @@ D:\proyectosVB\Tic-Tac-Toe\obj\Debug\Tic-Tac-Toe.xml
 D:\proyectosVB\Tic-Tac-Toe\obj\Debug\Tic-Tac-Toe.pdb
 D:\proyectosVB\Tic-Tac-Toe\obj\Debug\Tic_Tac_Toe.Ayuda.resources
 D:\proyectosVB\Tic-Tac-Toe\obj\Debug\Tic_Tac_Toe.Opciones.resources
+D:\proyectosVB\Tic-Tac-Toe\obj\Debug\Tic_Tac_Toe.Ganador.resources

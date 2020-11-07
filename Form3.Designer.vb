@@ -40,9 +40,9 @@ Partial Class Ayuda
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1067, 554)
+        Me.ClientSize = New System.Drawing.Size(375, 228)
         Me.Controls.Add(Me.Label_ayuda)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Ayuda"
         Me.Text = "Acerca de ..."
         Me.ResumeLayout(False)
