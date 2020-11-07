@@ -22,12 +22,15 @@ Partial Class Form1
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.InicioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpcionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.JugarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AyudaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExplicacionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AcercaDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PanelFondo = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -35,7 +38,6 @@ Partial Class Form1
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PictureBoxJug1 = New System.Windows.Forms.PictureBox()
         Me.LabelJugador1 = New System.Windows.Forms.Label()
-        Me.MenuStrip1.SuspendLayout()
         Me.PanelFondo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
@@ -46,10 +48,9 @@ Partial Class Form1
         'MenuStrip1
         '
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InicioToolStripMenuItem, Me.SalirToolStripMenuItem, Me.AyudaToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1099, 29)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1099, 24)
         Me.MenuStrip1.TabIndex = 9
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -58,7 +59,7 @@ Partial Class Form1
         Me.InicioToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpcionesToolStripMenuItem, Me.JugarToolStripMenuItem})
         Me.InicioToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.InicioToolStripMenuItem.Name = "InicioToolStripMenuItem"
-        Me.InicioToolStripMenuItem.Size = New System.Drawing.Size(59, 25)
+        Me.InicioToolStripMenuItem.Size = New System.Drawing.Size(73, 32)
         Me.InicioToolStripMenuItem.Text = "Inicio"
         '
         'OpcionesToolStripMenuItem
@@ -77,33 +78,46 @@ Partial Class Form1
         '
         Me.SalirToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
-        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(53, 25)
+        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(64, 32)
         Me.SalirToolStripMenuItem.Text = "Salir"
         '
         'AyudaToolStripMenuItem
         '
         Me.AyudaToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.AyudaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExplicacionToolStripMenuItem, Me.AcercaDeToolStripMenuItem})
         Me.AyudaToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.AyudaToolStripMenuItem.Name = "AyudaToolStripMenuItem"
-        Me.AyudaToolStripMenuItem.Size = New System.Drawing.Size(66, 25)
+        Me.AyudaToolStripMenuItem.Size = New System.Drawing.Size(82, 32)
         Me.AyudaToolStripMenuItem.Text = "Ayuda"
+        '
+        'ExplicacionToolStripMenuItem
+        '
+        Me.ExplicacionToolStripMenuItem.Name = "ExplicacionToolStripMenuItem"
+        Me.ExplicacionToolStripMenuItem.Size = New System.Drawing.Size(160, 26)
+        Me.ExplicacionToolStripMenuItem.Text = "Explicacion"
+        '
+        'AcercaDeToolStripMenuItem
+        '
+        Me.AcercaDeToolStripMenuItem.Name = "AcercaDeToolStripMenuItem"
+        Me.AcercaDeToolStripMenuItem.Size = New System.Drawing.Size(160, 26)
+        Me.AcercaDeToolStripMenuItem.Text = "Acerca de ..."
         '
         'PanelFondo
         '
         Me.PanelFondo.Controls.Add(Me.PictureBox1)
         Me.PanelFondo.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelFondo.Location = New System.Drawing.Point(0, 29)
+        Me.PanelFondo.Location = New System.Drawing.Point(0, 24)
         Me.PanelFondo.Name = "PanelFondo"
-        Me.PanelFondo.Size = New System.Drawing.Size(1099, 674)
+        Me.PanelFondo.Size = New System.Drawing.Size(1099, 679)
         Me.PanelFondo.TabIndex = 25
         '
         'PictureBox1
         '
-        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PictureBox1.Image = Global.Tic_Tac_Toe.My.Resources.Resources.cMVxfiI
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.PictureBox1.Image = Global.Tic_Tac_Toe.My.Resources.Resources.aplicacion1
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 56)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(1099, 674)
+        Me.PictureBox1.Size = New System.Drawing.Size(1099, 623)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 25
         Me.PictureBox1.TabStop = False
@@ -173,12 +187,11 @@ Partial Class Form1
         Me.Controls.Add(Me.PanelFondo)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "Form1"
         Me.Text = "Tic-Tac-Toe"
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
         Me.PanelFondo.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
@@ -205,4 +218,6 @@ Partial Class Form1
     Friend WithEvents Panel1 As Panel
     Friend WithEvents PictureBoxJug1 As PictureBox
     Friend WithEvents LabelJugador1 As Label
+    Friend WithEvents ExplicacionToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AcercaDeToolStripMenuItem As ToolStripMenuItem
 End Class

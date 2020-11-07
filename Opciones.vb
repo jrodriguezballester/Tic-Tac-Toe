@@ -1,67 +1,97 @@
 ﻿Public Class Opciones
 
-
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-
+    ''' <summary>
+    ''' Cierra Opciones
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles ButtonCerrar.Click
+        Close()
     End Sub
 
-    Private Sub Poner_icono_por_defecto1(sender As Object, e As EventArgs) Handles CheckBox1.CheckStateChanged
-        ' gamer1_imagen = Global.Tic_Tac_Toe.My.Resources.Resources._69jYqiBt
+    ''' <summary>
+    ''' recoge el valor de las filas y lanza el juego
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub ButtonAceptar_Click(sender As Object, e As EventArgs) Handles ButtonAceptar.Click
+        Close()
+        ' Dim filas As Integer
+        If RadioButton3.Checked Then
+            Form1.filas = 3
+        ElseIf RadioButton4.Checked Then
+            Form1.filas = 4
+        ElseIf RadioButton5.Checked Then
+            Form1.filas = 5
+        ElseIf RadioButton6.Checked Then
+            Form1.filas = 6
+        End If
+        Form1.Iniciarjuego()
+    End Sub
+
+    ''' <summary>
+    ''' Cuando esta checkeada muestra imagen jugador 1
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
         If CheckBox1.Checked Then
-            PictureBoxGamer1.Image = Global.Tic_Tac_Toe.My.Resources.Resources.Alphabet_150787_640
-        Else
-            PictureBoxGamer2.Image = Global.Tic_Tac_Toe.My.Resources.Resources._3077_png_860
+            PictureBoxGamer1.Image = Global.Tic_Tac_Toe.My.Resources.Resources.x
         End If
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        ' Call ShowDialog.
+    ''' <summary>
+    ''' Cuando esta checkeada muestra imagen jugador 2
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
+        If CheckBox2.Checked Then
+            PictureBoxGamer2.Image = Global.Tic_Tac_Toe.My.Resources.Resources.O
+        End If
+    End Sub
+
+    ''' <summary>
+    ''' Abre un OpenFileDialog, Carga Imagen de Jugador 2 y deschekea la casilla de imagen por defecto
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub ButtonImagen2_Click(sender As Object, e As EventArgs) Handles ButtonImagen2.Click
         Dim opf1 = New OpenFileDialog()
         opf1.Title = "Please select Avatar"
         opf1.InitialDirectory = "D:\proyectosVB\Tic-Tac-Toe\recursos"
         '  opf1.InitialDirectory = "."
         opf1.Filter = "Image Files(*.png;*.jpg;*.bmp)|*.png;*.jpg;*.bmp|All files (*.*)|*.*"
         Dim result As DialogResult = opf1.ShowDialog()
-        ' Test result.
-        If result = Windows.Forms.DialogResult.OK Then
-            Try
-                PictureBoxGamer1.Image = Image.FromFile(opf1.FileName)
-            Catch ex As Exception
-                PictureBoxGamer1.Image = Global.Tic_Tac_Toe.My.Resources.Resources.Alphabet_150787_640
-            End Try
-        End If
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Dim opf1 = New OpenFileDialog()
-        opf1.Title = "Please select Avatar"
-        opf1.InitialDirectory = "D:\proyectosVB\Tic-Tac-Toe\recursos"
-        '  opf1.InitialDirectory = "."
-        opf1.Filter = "Image Files(*.png;*.jpg;*.bmp)|*.png;*.jpg;*.bmp|All files (*.*)|*.*"
-        Dim result As DialogResult = opf1.ShowDialog()
-        ' Test result.
         If result = Windows.Forms.DialogResult.OK Then
             Try
                 PictureBoxGamer2.Image = Image.FromFile(opf1.FileName)
+                CheckBox2.Checked = False
             Catch ex As Exception
-                PictureBoxGamer2.Image = Global.Tic_Tac_Toe.My.Resources.Resources._3077_png_860
+                PictureBoxGamer2.Image = Global.Tic_Tac_Toe.My.Resources.Resources.O
             End Try
         End If
     End Sub
 
-    Private Sub ButtonAceptar_Click(sender As Object, e As EventArgs) Handles ButtonAceptar.Click
-        Close()
-        Dim filas As Integer
-        If RadioButton3.Checked Then
-            filas = 3
-        ElseIf RadioButton4.Checked Then
-            filas = 4
-        ElseIf RadioButton5.Checked Then
-            filas = 5
-
+    ''' <summary>
+    ''' Abre un OpenFileDialog, Carga Imagen de Jugador 1 y deschekea la casilla de imagen por defecto
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub ButtonImagen1_Click(sender As Object, e As EventArgs) Handles ButtonImagen1.Click
+        Dim opf1 = New OpenFileDialog()
+        opf1.Title = "Please select Avatar"
+        opf1.InitialDirectory = "D:\proyectosVB\Tic-Tac-Toe\recursos"
+        '  opf1.InitialDirectory = "."
+        opf1.Filter = "Image Files(*.png;*.jpg;*.bmp)|*.png;*.jpg;*.bmp|All files (*.*)|*.*"
+        Dim result As DialogResult = opf1.ShowDialog()
+        If result = Windows.Forms.DialogResult.OK Then
+            Try
+                PictureBoxGamer1.Image = Image.FromFile(opf1.FileName)
+                CheckBox1.Checked = False
+            Catch ex As Exception
+                PictureBoxGamer1.Image = Global.Tic_Tac_Toe.My.Resources.Resources.x
+            End Try
         End If
-        Form1.Nivel_juego(filas)
-        Form1.iniciarjuego()
-
     End Sub
 End Class

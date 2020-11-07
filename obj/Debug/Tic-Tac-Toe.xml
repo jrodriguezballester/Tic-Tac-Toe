@@ -22,45 +22,157 @@ Tic-Tac-Toe
   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
 </summary>
 </member>
-<member name="P:Tic_Tac_Toe.My.Resources.Resources._3077_png_860">
+<member name="P:Tic_Tac_Toe.My.Resources.Resources.aplicacion">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
-<member name="P:Tic_Tac_Toe.My.Resources.Resources._69jYqiBt">
+<member name="P:Tic_Tac_Toe.My.Resources.Resources.aplicacion1">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
-<member name="P:Tic_Tac_Toe.My.Resources.Resources.Alphabet_150787_640">
+<member name="P:Tic_Tac_Toe.My.Resources.Resources.O">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
-<member name="P:Tic_Tac_Toe.My.Resources.Resources.cMVxfiI">
+<member name="P:Tic_Tac_Toe.My.Resources.Resources.x">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
-<member name="P:Tic_Tac_Toe.My.Resources.Resources.cMVxfiI1">
-<summary>
-  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-</summary>
+<member name="M:Tic_Tac_Toe.Form1.Crear_casillas">
+ <summary>
+ Crea casillas cuadradas, como pictureBox, esta a medio parametrizar (falta valores de y) para poder cambiar facilmente de dimensiones
+ </summary>
 </member>
-<member name="P:Tic_Tac_Toe.My.Resources.Resources.cMVxfiI2">
-<summary>
-  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-</summary>
+<member name="M:Tic_Tac_Toe.Form1.Inicializar_datos">
+ <summary>
+ Pone banderas y matriz de casillas a su valor inicial
+ </summary>
 </member>
-<member name="P:Tic_Tac_Toe.My.Resources.Resources.Grouchy_Emote">
-<summary>
-  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-</summary>
+<member name="M:Tic_Tac_Toe.Form1.Casilla_Click(System.Object,System.EventArgs)">
+ <summary>
+ Pone imagen jugador y da valor a matriz en funcion de su nombre (saca posicion)
+ Controla que no este pulsada esa casilla
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
 </member>
-<member name="P:Tic_Tac_Toe.My.Resources.Resources.lets_do_this_lee_sin_best_emotes_league_of_legends">
-<summary>
-  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-</summary>
+<member name="M:Tic_Tac_Toe.Form1.Mostrar_ganador">
+ <summary>
+ Muestra el ganador 
+ </summary>
+</member>
+<member name="M:Tic_Tac_Toe.Form1.Cambiar_jugador">
+ <summary>
+ Cambia el valor de la bandera y llama a pintar el borde de la card jugador
+ </summary>
+</member>
+<member name="M:Tic_Tac_Toe.Form1.Mostrar_borde_jugador">
+ <summary>
+ Pinta el borde de la card del jugador para indicar quien tiene que mover
+ </summary>
+</member>
+<member name="M:Tic_Tac_Toe.Form1.Quedan_movimientos">
+ <summary>
+ Controla que quedan casillas sin marcar (Valor en la matriz=0). Si no quedan se declara partida empatada 
+ </summary>
+</member>
+<member name="M:Tic_Tac_Toe.Form1.Check_ganador">
+ <summary>
+ Recorre toda la matriz por filas. La suma (en positivo o negativo) de la fila debe ser igual al numero de filas.
+ El ganador se obtiene por el signo (pos o neg)
+ </summary>
+</member>
+<member name="M:Tic_Tac_Toe.Form1.Crear_panel_juego">
+ <summary>
+ diseño panel dinamicamente
+ </summary>
+</member>
+<member name="M:Tic_Tac_Toe.Form1.SalirToolStripMenuItem_Click(System.Object,System.EventArgs)">
+ <summary>
+ Salir desde opcion del menu
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Tic_Tac_Toe.Form1.JugarToolStripMenuItem_Click(System.Object,System.EventArgs)">
+ <summary>
+ Inicia el juego si no hay jugadores, nivel los toma por defecto
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Tic_Tac_Toe.Form1.Iniciarjuego">
+ <summary>
+ Inicio del juego, elimina panel anterior del juego 
+ </summary>
+</member>
+<member name="M:Tic_Tac_Toe.Form1.Crear_card_jugadores">
+ <summary>
+ Crea las tarjetas de los jugadores
+ </summary>
+</member>
+<member name="M:Tic_Tac_Toe.Form1.Nivel_juego">
+ <summary>
+ Redimensiona matriz 
+ </summary>
+</member>
+<member name="M:Tic_Tac_Toe.Form1.OpcionesToolStripMenuItem_Click(System.Object,System.EventArgs)">
+ <summary>
+ Muestra la ventana de Opciones
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Tic_Tac_Toe.Form1.Quien_empieza">
+ <summary>
+ Eleccion aleatoria del jugador que empieza, se controla unicamente al jugador 1 (gamer1=true cuando puede mover)
+ </summary>
+</member>
+<member name="M:Tic_Tac_Toe.Opciones.Button4_Click(System.Object,System.EventArgs)">
+ <summary>
+ Cierra Opciones
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Tic_Tac_Toe.Opciones.ButtonAceptar_Click(System.Object,System.EventArgs)">
+ <summary>
+ recoge el valor de las filas y lanza el juego
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Tic_Tac_Toe.Opciones.CheckBox1_CheckedChanged(System.Object,System.EventArgs)">
+ <summary>
+ Cuando esta checkeada muestra imagen jugador 1
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Tic_Tac_Toe.Opciones.CheckBox2_CheckedChanged(System.Object,System.EventArgs)">
+ <summary>
+ Cuando esta checkeada muestra imagen jugador 2
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Tic_Tac_Toe.Opciones.ButtonImagen2_Click(System.Object,System.EventArgs)">
+ <summary>
+ Abre un OpenFileDialog, Carga Imagen de Jugador 2 y deschekea la casilla de imagen por defecto
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Tic_Tac_Toe.Opciones.ButtonImagen1_Click(System.Object,System.EventArgs)">
+ <summary>
+ Abre un OpenFileDialog, Carga Imagen de Jugador 1 y deschekea la casilla de imagen por defecto
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
 </member>
 </members>
 </doc>

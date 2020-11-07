@@ -63,9 +63,9 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property _3077_png_860() As System.Drawing.Bitmap
+        Friend ReadOnly Property aplicacion() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("3077.png_860", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("aplicacion", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -73,9 +73,9 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property _69jYqiBt() As System.Drawing.Bitmap
+        Friend ReadOnly Property aplicacion1() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("69jYqiBt", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("aplicacion1", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -83,9 +83,9 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Alphabet_150787_640() As System.Drawing.Bitmap
+        Friend ReadOnly Property O() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Alphabet-150787_640", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("O", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -93,49 +93,9 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property cMVxfiI() As System.Drawing.Bitmap
+        Friend ReadOnly Property x() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("cMVxfiI", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property cMVxfiI1() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("cMVxfiI1", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property cMVxfiI2() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("cMVxfiI2", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property Grouchy_Emote() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("Grouchy_Emote", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property lets_do_this_lee_sin_best_emotes_league_of_legends() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("lets-do-this-lee-sin-best-emotes-league-of-legends", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("x", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

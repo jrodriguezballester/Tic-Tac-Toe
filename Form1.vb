@@ -1,20 +1,23 @@
 ﻿Public Class Form1
-    Dim filas As Integer
+    Public filas As Integer = 3 'inicializamos a numero minimo numero de filas
     Dim PanelJuego As Panel
     Dim gamer1 As Boolean
     Dim finJuego As Boolean = False
     Dim gamer1_imagen, gamer2_imagen As Image
-    Dim gamer1_name, gamer2_name, Winner As String
+    Dim gamer1_name, gamer2_name, winner As String
     Dim matriz(0, 0) As Integer
     Dim PanelBordeJug1, PanelBorde_jug2 As Panel
 
-    Private Sub crearCasillas()
+    ''' <summary>
+    ''' Crea casillas cuadradas, como pictureBox, esta a medio parametrizar (falta valores de y) para poder cambiar facilmente de dimensiones
+    ''' </summary>
+    Private Sub Crear_casillas()
         Dim xPos, yPos, xInc, yInc, xPanel, aLbl As Integer
         Dim lblAux As Label
         Dim xsize As Integer
         Dim PictureBoxAux As PictureBox
         xPanel = 600
-        aLbl = 20
+        aLbl = 60 / filas
         yPos = 0
         xsize = (600 - (aLbl * (filas - 1))) / filas
         xInc = xsize + aLbl
@@ -42,7 +45,7 @@
         For i = 1 To filas - 1
             lblAux = New Label
             lblAux.BackColor = Color.Black
-            lblAux.Size = New Size(20, 600)
+            lblAux.Size = New Size(aLbl, 600)
             lblAux.Location = New Point(xPos, 0)
             PanelJuego.Controls.Add(lblAux)
             xPos += xInc
@@ -51,12 +54,17 @@
         For i = 1 To filas - 1
             lblAux = New Label
             lblAux.BackColor = Color.Black
-            lblAux.Size = New Size(600, 20)
+            lblAux.Size = New Size(600, aLbl)
             lblAux.Location = New Point(0, yPos)
             PanelJuego.Controls.Add(lblAux)
             yPos += yInc
         Next
     End Sub
+
+
+    ''' <summary>
+    ''' Pone banderas y matriz de casillas a su valor inicial
+    ''' </summary>
     Private Sub Inicializar_datos()
         'matriz datos
         For i = 0 To filas - 1
@@ -67,26 +75,39 @@
         'finJuego
         finJuego = False
 
+        'Panel de las casillas
+        If IsNothing(PanelJuego) Then
+        Else
+            PanelJuego.Dispose()
+        End If
     End Sub
+
+
+    ''' <summary>
+    ''' Pone imagen jugador y da valor a matriz en funcion de su nombre (saca posicion)
+    ''' Controla que no este pulsada esa casilla
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub Casilla_Click(sender As Object, e As EventArgs)
-        'No esta marcada sender.tag=0
+        ' limita el numero de filas la forma de obtener la posicion 
         Dim posx As String = sender.name.substring(10, 1)
         Dim posy As String = sender.name.substring(11)
-        'Label1.Text = sender.tag
+
+        'No esta marcada sender.tag=0
         If IsNothing(sender.tag) Then
-            'Saber que jugador es y Poner imagen jugador,rellenar matriz
+            'Saber que jugador es y poner imagen jugador
             If gamer1 Then
                 sender.Image = gamer1_imagen
                 sender.tag = "1"
-                matriz(posx, posy) = 1
             Else
                 sender.Image = gamer2_imagen
                 sender.tag = "-1"
-                matriz(posx, posy) = -1
             End If
-            '     Label1.Text = posx
-            '     Label2.Text = posy
-            Check_ganador(sender)
+            ' rellenar matriz
+            matriz(posx, posy) = sender.tag
+
+            Check_ganador()
             If finJuego Then
                 Mostrar_ganador()
             Else
@@ -97,15 +118,21 @@
                     Cambiar_jugador()
                 End If
             End If
+        Else
+            MessageBox.Show("Casilla marcada")
         End If
     End Sub
 
+
+    ''' <summary>
+    ''' Muestra el ganador 
+    ''' </summary>
     Private Sub Mostrar_ganador()
         Dim mensaje As String
-        If Winner = "0" Then
+        If winner = "0" Then
             mensaje = "Habeis empatado"
         Else
-            mensaje = "Ganador: " & Winner
+            mensaje = "Ganador: " & winner
         End If
         Dim result As DialogResult = MessageBox.Show(mensaje & "
 Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
@@ -115,14 +142,23 @@ Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
             Close()
         End If
         If (result = DialogResult.Yes) Then
-            iniciarjuego()
+            Iniciarjuego()
         End If
     End Sub
 
+
+    ''' <summary>
+    ''' Cambia el valor de la bandera y llama a pintar el borde de la card jugador
+    ''' </summary>
     Private Sub Cambiar_jugador()
         gamer1 = Not gamer1
         Mostrar_borde_jugador()
     End Sub
+
+
+    ''' <summary>
+    ''' Pinta el borde de la card del jugador para indicar quien tiene que mover
+    ''' </summary>
     Private Sub Mostrar_borde_jugador()
         If gamer1 Then
             PanelBordeJug1.BackColor = Color.Green
@@ -133,6 +169,9 @@ Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
         End If
     End Sub
 
+    ''' <summary>
+    ''' Controla que quedan casillas sin marcar (Valor en la matriz=0). Si no quedan se declara partida empatada 
+    ''' </summary>
     Private Sub Quedan_movimientos()
         Dim valor As Integer
         Dim mover As Boolean = False
@@ -140,25 +179,29 @@ Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
             For j = 0 To filas - 1
                 valor = matriz(i, j)
                 If valor = 0 Then
-                    '  MessageBox.Show("quedan movimientos")
-                    'mejorar for
                     mover = True
                     Exit For
                 End If
             Next
-            If mover Then Exit For
+            If mover Then
+                Exit For
+            End If
         Next
         If Not mover Then
-            ' quedan empate 
             finJuego = True
-            Winner = 0
+            winner = 0  ' quedan empate 
         End If
     End Sub
 
-    Private Sub Check_ganador(sender As Object)
+    ''' <summary>
+    ''' Recorre toda la matriz por filas. La suma (en positivo o negativo) de la fila debe ser igual al numero de filas.
+    ''' El ganador se obtiene por el signo (pos o neg)
+    ''' </summary>
+    Private Sub Check_ganador()
         Dim valor As Integer = 0
         Dim gana1 = False
         Dim gana2 = False
+
         ' horizontales
         For i = 0 To filas - 1
             For j = 0 To filas - 1
@@ -168,6 +211,7 @@ Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
             Next
             valor = 0
         Next
+
         ' verticales
         For i = 0 To filas - 1
             For j = 0 To filas - 1
@@ -177,8 +221,9 @@ Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
             Next
             valor = 0
         Next
-        valor = 0
+
         'diagonal \
+        valor = 0
         For i = 0 To filas - 1
             valor += matriz(i, i)
             If valor = filas Then gana1 = True
@@ -194,65 +239,87 @@ Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
             If valor = -(filas) Then gana2 = True
         Next
         If gana1 Then
-            Winner = gamer1_name
+            winner = gamer1_name
             finJuego = True
         End If
         If gana2 Then
-            Winner = gamer2_name
+            winner = gamer2_name
             finJuego = True
         End If
     End Sub
 
-    Private Sub crearPanelJuego()
+    ''' <summary>
+    ''' diseño panel dinamicamente
+    ''' </summary>
+    Private Sub Crear_panel_juego()
         PanelJuego = New Panel With {
-            .BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle,
-            .Location = New System.Drawing.Point(337, 58),
+            .BorderStyle = BorderStyle.FixedSingle,
+            .Location = New Point(337, 58),
             .Name = "PanelJuego",
-        .Size = New System.Drawing.Size(600, 600)
+            .Size = New Size(600, 600)
         }
         PanelFondo.Controls.Add(PanelJuego)
     End Sub
 
-
+    ''' <summary>
+    ''' Salir desde opcion del menu
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click
         Close()
     End Sub
 
-    Private Sub AyudaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AyudaToolStripMenuItem.Click
-
-        Ayuda.Label_ayuda.Text = "Tic-Tac-Toe version 1.0
-        https://github.com/jrodriguezballester/Tic-Tac-Toe.git
-        Lenguaje: Visual Basic
-        Autor: Jose Rodriguez"
-        Ayuda.Size = New Size(540, 250)
-        Ayuda.Show()
-    End Sub
-
+    ''' <summary>
+    ''' Inicia el juego si no hay jugadores, nivel los toma por defecto
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub JugarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles JugarToolStripMenuItem.Click
-        'poner variables a 0
-        iniciarjuego()
+        Iniciarjuego()
     End Sub
 
-    Public Sub iniciarjuego()
-        Inicializar_datos()
-        If IsNothing(PanelJuego) Then
-        Else
-            PanelJuego.Dispose()
-        End If
+    ''' <summary>
+    ''' Inicio del juego, elimina panel anterior del juego 
+    ''' </summary>
+    Public Sub Iniciarjuego()
 
-        Nivel_juego(filas)
-        crearPanelJuego()
-        Crear_jugadores()
+        Nivel_juego()
+        Inicializar_datos()
+        Crear_panel_juego()
+        Crear_card_jugadores()
+        Quien_empieza()
+        Crear_casillas()
+
         PanelJuego.BringToFront()
         PanelBordeJug1.BringToFront()
         PanelBorde_jug2.BringToFront()
 
-        crearCasillas()
-        ' cargarJugadores()
-        Quien_empieza()
     End Sub
 
-    Private Sub Crear_jugadores()
+    Private Sub AcercaDeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AcercaDeToolStripMenuItem.Click
+        Ayuda.Label_ayuda.Text = "Tic-Tac-Toe version 2.0
+            https://github.com/jrodriguezballester/Tic-Tac-Toe.git
+            Lenguaje: Visual Basic
+            Autor: Jose Rodriguez"
+        Ayuda.Size = New Size(540, 250)
+        Ayuda.Show()
+    End Sub
+
+    Private Sub ExplicacionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExplicacionToolStripMenuItem.Click
+        Ayuda.Label_ayuda.Text = "Seleccione Opciones para poner introducir los jugadores y nivel de juego
+    Seleccione Jugar para lanzar una partida rapida al nivel 3 x 3 "
+        Ayuda.Size = New Size(640, 150)
+        Ayuda.Show()
+    End Sub
+
+
+
+
+    ''' <summary>
+    ''' Crea las tarjetas de los jugadores
+    ''' </summary>
+    Private Sub Crear_card_jugadores()
         'jugador 1
         Dim PictureBoxJug1 As New PictureBox With {
             .Location = New Point(20, 60),
@@ -269,7 +336,7 @@ Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
             .Margin = New System.Windows.Forms.Padding(4, 0, 4, 0),
             .Name = "LabelJugador1",
             .Size = New System.Drawing.Size(79, 24),
-            .Text = "Jugador",
+            .Text = "Jugador 1",
             .TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         }
         Dim Panel1 As New Panel With {
@@ -279,7 +346,6 @@ Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
             .Name = "Panel1",
             .Size = New System.Drawing.Size(220, 220)
         }
-
         PanelBordeJug1 = New Panel With {
             .Location = New System.Drawing.Point(20, 45),
             .Name = "PanelBordeJug1",
@@ -289,6 +355,7 @@ Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
         Panel1.Controls.Add(PictureBoxJug1)
         Panel1.Controls.Add(LabelJugador1)
         Me.Controls.Add(PanelBordeJug1)
+
         'jugador 2
         Dim PictureBoxJug2 As New PictureBox With {
             .Location = New Point(20, 60),
@@ -305,7 +372,7 @@ Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
             .Margin = New System.Windows.Forms.Padding(4, 0, 4, 0),
             .Name = "LabelJugador2",
             .Size = New System.Drawing.Size(79, 24),
-            .Text = "Jugador",
+            .Text = "Jugador 2",
             .TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         }
         Dim Panel2 As New Panel With {
@@ -334,31 +401,39 @@ Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
         gamer2_imagen = Opciones.PictureBoxGamer2.Image
 
         If gamer1_name = "" Then
-            gamer1_name = "jug 1"
+            gamer1_name = "jugador 1"
         End If
         If gamer2_name = "" Then
-            gamer2_name = "jug 2"
+            gamer2_name = "jugador 2"
         End If
-
 
         LabelJugador1.Text = gamer1_name
         LabelJugador2.Text = gamer2_name
+
         PictureBoxJug1.Image = gamer1_imagen
         PictureBoxJug2.Image = gamer2_imagen
 
     End Sub
 
-    Public Sub Nivel_juego(nuevafila As Integer)
-        filas = nuevafila
+    ''' <summary>
+    ''' Redimensiona matriz 
+    ''' </summary>
+    Public Sub Nivel_juego()
         ReDim matriz(filas - 1, filas - 1)
     End Sub
 
+    ''' <summary>
+    ''' Muestra la ventana de Opciones
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub OpcionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpcionesToolStripMenuItem.Click
         Opciones.ShowDialog()
     End Sub
 
-
-
+    ''' <summary>
+    ''' Eleccion aleatoria del jugador que empieza, se controla unicamente al jugador 1 (gamer1=true cuando puede mover)
+    ''' </summary>
     Private Sub Quien_empieza()
         Dim rdn As New Random
         Dim jugSelect As Integer
@@ -369,55 +444,6 @@ Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
             gamer1 = False
         End If
         Mostrar_borde_jugador()
-    End Sub
-
-    Private Sub crearCasillas2()
-        Dim xPos, yPos, xInc, yInc As Integer
-        Dim lblAux As Label
-        Dim xsize As Integer
-        Dim PictureBoxAux As PictureBox
-        yPos = 20
-        xInc = 200
-        yInc = 200
-        xsize = 150
-        For i = 0 To filas - 1
-            xPos = 20
-            For j = 0 To filas - 1
-                PictureBoxAux = New PictureBox
-                PictureBoxAux.Location = New System.Drawing.Point(xPos, yPos)
-                PictureBoxAux.Name = "PictureBox" & i & j
-                PictureBoxAux.Size = New System.Drawing.Size(xsize, xsize)
-                PictureBoxAux.BackColor = Color.Red
-                PictureBoxAux.SizeMode = PictureBoxSizeMode.StretchImage
-                PictureBoxAux.Tag = Nothing
-                AddHandler PictureBoxAux.Click, AddressOf Casilla_Click
-                PanelJuego.Controls.Add(PictureBoxAux)
-                xPos += xInc
-            Next
-            yPos += yInc
-        Next
-        ' Separacion Casillas
-        ' xPos = 185
-        yPos = 10
-        xInc = 200
-        yInc = 200
-        For i = 1 To filas - 1
-            lblAux = New Label
-            lblAux.BackColor = Color.Black
-            lblAux.Size = New Size(20, 570)
-            lblAux.Location = New Point(xPos, 10)
-            PanelJuego.Controls.Add(lblAux)
-            xPos += xInc
-        Next
-        yPos = 175
-        For i = 1 To filas - 1
-            lblAux = New Label
-            lblAux.BackColor = Color.Black
-            lblAux.Size = New Size(570, 20)
-            lblAux.Location = New Point(10, yPos)
-            PanelJuego.Controls.Add(lblAux)
-            yPos += yInc
-        Next
     End Sub
 
 End Class
