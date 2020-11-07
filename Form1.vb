@@ -7,6 +7,7 @@
     Dim gamer1_name, gamer2_name, winner As String
     Dim matriz(0, 0) As Integer
     Dim PanelBordeJug1, PanelBorde_jug2 As Panel
+    Dim xsizePanel As Integer = 700
 
     ''' <summary>
     ''' Crea casillas cuadradas, como pictureBox, esta a medio parametrizar (falta valores de y) para poder cambiar facilmente de dimensiones
@@ -19,7 +20,7 @@
         xPanel = 600
         aLbl = 60 / filas
         yPos = 0
-        xsize = (600 - (aLbl * (filas - 1))) / filas
+        xsize = (xsizePanel - (aLbl * (filas - 1))) / filas
         xInc = xsize + aLbl
         yInc = xInc
         For i = 0 To filas - 1
@@ -45,7 +46,7 @@
         For i = 1 To filas - 1
             lblAux = New Label
             lblAux.BackColor = Color.Black
-            lblAux.Size = New Size(aLbl, 600)
+            lblAux.Size = New Size(aLbl, xsizePanel)
             lblAux.Location = New Point(xPos, 0)
             PanelJuego.Controls.Add(lblAux)
             xPos += xInc
@@ -54,7 +55,7 @@
         For i = 1 To filas - 1
             lblAux = New Label
             lblAux.BackColor = Color.Black
-            lblAux.Size = New Size(600, aLbl)
+            lblAux.Size = New Size(xsizePanel, aLbl)
             lblAux.Location = New Point(0, yPos)
             PanelJuego.Controls.Add(lblAux)
             yPos += yInc
@@ -107,6 +108,7 @@
             ' rellenar matriz
             matriz(posx, posy) = sender.tag
 
+            ' control de la accion en el juego
             Check_ganador()
             If finJuego Then
                 Mostrar_ganador()
@@ -130,20 +132,12 @@
     Private Sub Mostrar_ganador()
         Dim mensaje As String
         If winner = "0" Then
-            mensaje = "Habeis empatado"
+            Ganador.LabelNombreWinner.Text = "Empate"
         Else
+            Ganador.LabelNombreWinner.Text = winner
             mensaje = "Ganador: " & winner
         End If
-        Dim result As DialogResult = MessageBox.Show(mensaje & "
-Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
-        ' If the no button was pressed ...
-        If (result = DialogResult.No) Then
-            ' cancel the closure of the form.
-            Close()
-        End If
-        If (result = DialogResult.Yes) Then
-            Iniciarjuego()
-        End If
+        Ganador.ShowDialog()
     End Sub
 
 
@@ -169,6 +163,7 @@ Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
         End If
     End Sub
 
+
     ''' <summary>
     ''' Controla que quedan casillas sin marcar (Valor en la matriz=0). Si no quedan se declara partida empatada 
     ''' </summary>
@@ -192,6 +187,7 @@ Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
             winner = 0  ' quedan empate 
         End If
     End Sub
+
 
     ''' <summary>
     ''' Recorre toda la matriz por filas. La suma (en positivo o negativo) de la fila debe ser igual al numero de filas.
@@ -248,21 +244,23 @@ Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
         End If
     End Sub
 
+
     ''' <summary>
     ''' diseño panel dinamicamente
     ''' </summary>
     Private Sub Crear_panel_juego()
         PanelJuego = New Panel With {
             .BorderStyle = BorderStyle.FixedSingle,
-            .Location = New Point(337, 58),
+            .Location = New Point(337, 15),
             .Name = "PanelJuego",
-            .Size = New Size(600, 600)
+            .Size = New Size(xsizePanel, xsizePanel)
         }
         PanelFondo.Controls.Add(PanelJuego)
     End Sub
 
+
     ''' <summary>
-    ''' Salir desde opcion del menu
+    ''' Salir del juego
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
@@ -270,14 +268,61 @@ Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
         Close()
     End Sub
 
+
     ''' <summary>
-    ''' Inicia el juego si no hay jugadores, nivel los toma por defecto
+    ''' Explicacion juego
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub JugarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles JugarToolStripMenuItem.Click
+    Private Sub ContenioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ContenioToolStripMenuItem.Click
+        Ayuda.Label_ayuda.Text = "Seleccione Opciones para poner introducir los jugadores y nivel de juego
+        Seleccione Jugar para lanzar una partida rapida al nivel 3 x 3 
+        El nivel maximo (en codigo) es 9 filas "
+        Ayuda.Size = New Size(640, 150)
+        Ayuda.Show()
+    End Sub
+
+
+    ''' <summary>
+    ''' Muestra la ventana de Opciones
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub OpcionesToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles OpcionesToolStripMenuItem1.Click
+        Opciones.ShowDialog()
+    End Sub
+
+
+    ''' <summary>
+    ''' Salir desde opcion del menu
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub SalirToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem1.Click
+        Close()
+    End Sub
+
+
+    ''' <summary>
+    '''  Inicia el juego si no hay jugadores, nivel los toma por defecto
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub JugarToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles JugarToolStripMenuItem1.Click
         Iniciarjuego()
     End Sub
+
+
+    Private Sub AcercaDeToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AcercaDeToolStripMenuItem1.Click
+        Ayuda.Label_ayuda.Text = "Tic-Tac-Toe version 2.2
+            https://github.com/jrodriguezballester/Tic-Tac-Toe.git
+            Lenguaje: Visual Basic
+            Autor: Jose Rodriguez"
+        Ayuda.Size = New Size(540, 250)
+        Ayuda.Show()
+    End Sub
+
+
 
     ''' <summary>
     ''' Inicio del juego, elimina panel anterior del juego 
@@ -296,24 +341,6 @@ Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
         PanelBorde_jug2.BringToFront()
 
     End Sub
-
-    Private Sub AcercaDeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AcercaDeToolStripMenuItem.Click
-        Ayuda.Label_ayuda.Text = "Tic-Tac-Toe version 2.0
-            https://github.com/jrodriguezballester/Tic-Tac-Toe.git
-            Lenguaje: Visual Basic
-            Autor: Jose Rodriguez"
-        Ayuda.Size = New Size(540, 250)
-        Ayuda.Show()
-    End Sub
-
-    Private Sub ExplicacionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExplicacionToolStripMenuItem.Click
-        Ayuda.Label_ayuda.Text = "Seleccione Opciones para poner introducir los jugadores y nivel de juego
-    Seleccione Jugar para lanzar una partida rapida al nivel 3 x 3 "
-        Ayuda.Size = New Size(640, 150)
-        Ayuda.Show()
-    End Sub
-
-
 
 
     ''' <summary>
@@ -415,6 +442,7 @@ Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
 
     End Sub
 
+
     ''' <summary>
     ''' Redimensiona matriz 
     ''' </summary>
@@ -422,14 +450,6 @@ Quieres seguir jugando", "Fin del Juego", MessageBoxButtons.YesNo)
         ReDim matriz(filas - 1, filas - 1)
     End Sub
 
-    ''' <summary>
-    ''' Muestra la ventana de Opciones
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Private Sub OpcionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpcionesToolStripMenuItem.Click
-        Opciones.ShowDialog()
-    End Sub
 
     ''' <summary>
     ''' Eleccion aleatoria del jugador que empieza, se controla unicamente al jugador 1 (gamer1=true cuando puede mover)

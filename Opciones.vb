@@ -25,6 +25,12 @@
             Form1.filas = 5
         ElseIf RadioButton6.Checked Then
             Form1.filas = 6
+        ElseIf RadioButton7.Checked Then
+            Form1.filas = 7
+        ElseIf RadioButton8.Checked Then
+            Form1.filas = 8
+        ElseIf RadioButton9.Checked Then
+            Form1.filas = 9
         End If
         Form1.Iniciarjuego()
     End Sub
@@ -94,4 +100,5 @@
             End Try
         End If
     End Sub
+
 End Class
