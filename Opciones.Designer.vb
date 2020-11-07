@@ -387,7 +387,7 @@ Partial Class Opciones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.Tic_Tac_Toe.My.Resources.Resources.aplicacion
+        Me.BackgroundImage = Global.Tic_Tac_Toe.My.Resources.Resources.aplicacion2
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1056, 650)
         Me.Controls.Add(Me.ButtonCerrar)

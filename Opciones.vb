@@ -65,8 +65,8 @@
     Private Sub ButtonImagen2_Click(sender As Object, e As EventArgs) Handles ButtonImagen2.Click
         Dim opf1 = New OpenFileDialog()
         opf1.Title = "Please select Avatar"
-        opf1.InitialDirectory = "D:\proyectosVB\Tic-Tac-Toe\recursos"
-        '  opf1.InitialDirectory = "."
+        ' opf1.InitialDirectory = "D:\proyectosVB\Tic-Tac-Toe\recursos"
+        opf1.InitialDirectory = "."
         opf1.Filter = "Image Files(*.png;*.jpg;*.bmp)|*.png;*.jpg;*.bmp|All files (*.*)|*.*"
         Dim result As DialogResult = opf1.ShowDialog()
         If result = Windows.Forms.DialogResult.OK Then
