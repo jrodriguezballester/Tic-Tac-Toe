@@ -165,7 +165,10 @@
     <None Include="recursos\aplicacion.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <None Include="recursos\Imagen_IA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IA.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

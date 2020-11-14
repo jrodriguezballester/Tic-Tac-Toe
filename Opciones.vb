@@ -101,4 +101,31 @@
         End If
     End Sub
 
+
+    Private Sub RadioButtonHumano_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButtonHumano.CheckedChanged
+        EliminarOpcionesIA()
+    End Sub
+
+    Private Sub RadioButtonIA_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButtonIA.CheckedChanged
+        RellenarOpciones()
+
+    End Sub
+
+    Private Sub RellenarOpciones()
+        TextBoxGamer2_name.Text() = "HAL 9000"
+        TextBoxGamer2_name.Enabled = False
+        PictureBoxGamer2.Image = Global.Tic_Tac_Toe.My.Resources.Imagen_IA
+        ButtonImagen2.Enabled = False
+        CheckBox2.Checked = True
+        CheckBox2.Enabled = False
+    End Sub
+    Private Sub EliminarOpcionesIA()
+        TextBoxGamer2_name.Text() = ""
+        TextBoxGamer2_name.Enabled = True
+        PictureBoxGamer2.Image = Global.Tic_Tac_Toe.My.Resources.O
+        ButtonImagen2.Enabled = True
+        CheckBox2.Checked = True
+        CheckBox2.Enabled = True
+    End Sub
+
 End Class

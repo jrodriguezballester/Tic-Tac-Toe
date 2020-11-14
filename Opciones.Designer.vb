@@ -24,8 +24,8 @@ Partial Class Opciones
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Opciones))
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.RadioButtonIA = New System.Windows.Forms.RadioButton()
+        Me.RadioButtonHumano = New System.Windows.Forms.RadioButton()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.ButtonImagen2 = New System.Windows.Forms.Button()
         Me.PictureBoxGamer2 = New System.Windows.Forms.PictureBox()
@@ -59,8 +59,8 @@ Partial Class Opciones
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.Transparent
-        Me.Panel2.Controls.Add(Me.RadioButton2)
-        Me.Panel2.Controls.Add(Me.RadioButton1)
+        Me.Panel2.Controls.Add(Me.RadioButtonIA)
+        Me.Panel2.Controls.Add(Me.RadioButtonHumano)
         Me.Panel2.Controls.Add(Me.CheckBox2)
         Me.Panel2.Controls.Add(Me.ButtonImagen2)
         Me.Panel2.Controls.Add(Me.PictureBoxGamer2)
@@ -73,33 +73,33 @@ Partial Class Opciones
         Me.Panel2.Size = New System.Drawing.Size(421, 369)
         Me.Panel2.TabIndex = 5
         '
-        'RadioButton2
+        'RadioButtonIA
         '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton2.ForeColor = System.Drawing.SystemColors.ActiveCaption
-        Me.RadioButton2.Location = New System.Drawing.Point(240, 60)
-        Me.RadioButton2.Margin = New System.Windows.Forms.Padding(4)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(160, 33)
-        Me.RadioButton2.TabIndex = 6
-        Me.RadioButton2.TabStop = True
-        Me.RadioButton2.Text = "Ordenador"
-        Me.RadioButton2.UseVisualStyleBackColor = True
+        Me.RadioButtonIA.AutoSize = True
+        Me.RadioButtonIA.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RadioButtonIA.ForeColor = System.Drawing.SystemColors.ActiveCaption
+        Me.RadioButtonIA.Location = New System.Drawing.Point(240, 60)
+        Me.RadioButtonIA.Margin = New System.Windows.Forms.Padding(4)
+        Me.RadioButtonIA.Name = "RadioButtonIA"
+        Me.RadioButtonIA.Size = New System.Drawing.Size(160, 33)
+        Me.RadioButtonIA.TabIndex = 6
+        Me.RadioButtonIA.Text = "Ordenador"
+        Me.RadioButtonIA.UseVisualStyleBackColor = True
         '
-        'RadioButton1
+        'RadioButtonHumano
         '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton1.ForeColor = System.Drawing.SystemColors.ActiveCaption
-        Me.RadioButton1.Location = New System.Drawing.Point(240, 32)
-        Me.RadioButton1.Margin = New System.Windows.Forms.Padding(4)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(130, 33)
-        Me.RadioButton1.TabIndex = 5
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "Humano"
-        Me.RadioButton1.UseVisualStyleBackColor = True
+        Me.RadioButtonHumano.AutoSize = True
+        Me.RadioButtonHumano.Checked = True
+        Me.RadioButtonHumano.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RadioButtonHumano.ForeColor = System.Drawing.SystemColors.ActiveCaption
+        Me.RadioButtonHumano.Location = New System.Drawing.Point(240, 32)
+        Me.RadioButtonHumano.Margin = New System.Windows.Forms.Padding(4)
+        Me.RadioButtonHumano.Name = "RadioButtonHumano"
+        Me.RadioButtonHumano.Size = New System.Drawing.Size(130, 33)
+        Me.RadioButtonHumano.TabIndex = 5
+        Me.RadioButtonHumano.TabStop = True
+        Me.RadioButtonHumano.Text = "Humano"
+        Me.RadioButtonHumano.UseVisualStyleBackColor = True
         '
         'CheckBox2
         '
@@ -387,7 +387,6 @@ Partial Class Opciones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.Tic_Tac_Toe.My.Resources.Resources.aplicacion2
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1056, 650)
         Me.Controls.Add(Me.ButtonCerrar)
@@ -412,8 +411,8 @@ Partial Class Opciones
 
     End Sub
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents RadioButton2 As RadioButton
-    Friend WithEvents RadioButton1 As RadioButton
+    Friend WithEvents RadioButtonIA As RadioButton
+    Friend WithEvents RadioButtonHumano As RadioButton
     Friend WithEvents CheckBox2 As CheckBox
     Friend WithEvents ButtonImagen2 As Button
     Friend WithEvents PictureBoxGamer2 As PictureBox

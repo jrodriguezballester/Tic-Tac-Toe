@@ -35,6 +35,7 @@
                 PictureBoxAux.Tag = Nothing
                 AddHandler PictureBoxAux.Click, AddressOf Casilla_Click
                 PanelJuego.Controls.Add(PictureBoxAux)
+                ''' Controls("PictureBox1.1").Text = 3
                 xPos += xInc
             Next
             yPos += yInc

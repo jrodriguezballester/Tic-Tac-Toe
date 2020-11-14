@@ -22,12 +22,17 @@ Tic-Tac-Toe
   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
 </summary>
 </member>
+<member name="P:Tic_Tac_Toe.My.Resources.Resources.aplicacion">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:Tic_Tac_Toe.My.Resources.Resources.aplicacion1">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
-<member name="P:Tic_Tac_Toe.My.Resources.Resources.aplicacion2">
+<member name="P:Tic_Tac_Toe.My.Resources.Resources.Imagen_IA">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>

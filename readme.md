@@ -36,3 +36,9 @@ Antes de empezar a jugar, y utilizando una opción del menú a tal 
 4) Podremos seleccionar, mediante RadioButtons, 2 tipos de juego: 3 en raya (versión que hemos implementado hasta ahora) y 4 en raya (nueva versión con 4x4 cuadrículas). Alguien se atreve con 5 en raya ...
 ![Screenshot](/recursos/c6.png)
 El nombre de las casillas PictureBox +fila +columna que da lugar a su posicion en la matriz,  y su forma de extraerlo Dim posx As String = sender.name.substring(10, 1) delimita el nivel del juego a un digito; una modificacion en el nombre  PictureBox +fila +separador +columna haria mas fácil la ampliacion de niveles
+
+## Version 3.1
+
+Agregada funcionalidad cuando el usuario selecciona el Radiobuton Ordenador u Humano. Se rellenan automaticamente las opciones del Ordenador.
+
+![Screenshot](/recursos/captOpcIA.png)
