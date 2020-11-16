@@ -1,20 +1,19 @@
 ﻿Public Class Form1
     Public filas As Integer = 3 'inicializamos a numero minimo numero de filas
     Dim PanelJuego As Panel
-    Dim gamer1 As Boolean
+    Dim gamer1, primeravez As Boolean
     Dim finJuego As Boolean = False
     Dim gamer1_imagen, gamer2_imagen As Image
     Dim gamer1_name, gamer2_name, winner As String
     Dim matrizTablero(0, 0) As Integer
     Dim matrizMaximos(0, 0) As Integer
-    Dim matrizCasos(2, 2) As Integer
-    Dim matrizCasosHum(2, 2) As Integer
+    Dim matrizCasos(0, 0) As Integer
     Dim matrizAux(0, 0) As Integer
-    Dim matrizPic(3, 3) As PictureBox
+    Dim matrizPic(0, 0) As PictureBox
     Dim PanelBordeJug1, PanelBorde_jug2 As Panel
     Dim xsizePanel As Integer = 700
-    Dim numCasos As Integer = 0
     Dim casos, posxMax, posyMax, Pmax As Integer
+    Dim SecondGamer As Boolean 'True = humano
 
     ''' <summary>
     ''' Crea casillas cuadradas, como pictureBox, esta a medio parametrizar (falta valores de y) para poder cambiar facilmente de dimensiones
@@ -84,7 +83,7 @@
         Next
         'finJuego
         finJuego = False
-
+        primeravez = True
         'Panel de las casillas
         If IsNothing(PanelJuego) Then
         Else
@@ -113,13 +112,30 @@
                 ' rellenar matriz
                 matrizTablero(posx, posy) = sender.tag
             Else
-                MessageBox.Show("mueve el ordenador")
-                matrizCasos = BorrarMatriz(matrizCasos)
-                matrizMaximos = BorrarMatriz(matrizMaximos)
-                PonerFichaIA()
+                If SecondGamer Then
+                    '    MessageBox.Show("mueve el ordenador")
+                    matrizCasos = BorrarMatriz(matrizCasos)
+                    matrizMaximos = BorrarMatriz(matrizMaximos)
+                    movimientoIA()
+                Else
+                    sender.Image = gamer2_imagen
+                    sender.tag = "-1"
+                    ' rellenar matriz
+                    matrizTablero(posx, posy) = sender.tag
+                End If
             End If
             ' control de la accion en el juego
             ControlPartida()
+            If Not finJuego Then
+                Cambiar_jugador()
+                If SecondGamer Then
+                    If Not gamer1 Then
+                        movimientoIA()
+                        ControlPartida()
+                        Cambiar_jugador()
+                    End If
+                End If
+            End If
         Else
             MessageBox.Show("Casilla marcada")
         End If
@@ -134,16 +150,8 @@
             Quedan_movimientos()
             If finJuego Then
                 Mostrar_ganador()
-            Else
-                Cambiar_jugador()
-                If Not gamer1 Then
-                    movimientoIA()
-                    Cambiar_jugador()
-                End If
-
             End If
         End If
-
     End Sub
 
     Private Sub movimientoIA()
@@ -334,116 +342,6 @@
 
 
 
-
-
-
-    Private Sub calcularMinHum()
-        For filaP As Integer = 0 To UBound(matrizAux)
-            For columnaP As Integer = 0 To UBound(matrizAux, 2)
-                If matrizAux(filaP, columnaP) = 0 Then
-                    CalcularCasosMin(filaP, columnaP)
-                End If
-            Next
-        Next
-    End Sub
-
-    Private Sub CalcularCasosMin(fila As Integer, columna As Integer)
-        Dim posxInicial = fila
-        Dim posyInicial = columna
-        matrizAux = CopiarReversoMatrizAux(matrizAux)
-        'filas horizontales
-        matrizAux = ComprobarFila(posxInicial, posyInicial)
-        Dim numFilasPosibles As Integer = Calcularnumerodefilas(matrizAux)
-
-        matrizAux = CopiarReversoMatrizAux(matrizAux)
-        ' matrizAux(posxInicial, posyInicial) = -1
-
-        ' Columnas
-        matrizAux = ComprobarColumna(posxInicial, posyInicial)
-        Dim numcolunmasPosibles As Integer = calcularnumerodecolumnas(matrizAux)
-
-        matrizAux = CopiarReversoMatrizAux(matrizAux)
-        '  matrizAux(posxInicial, posyInicial) = -1
-
-        ' diagonal \
-        matrizAux = ComprobarDiagonal1(posxInicial, posyInicial)
-        Dim numDiagonal1Posibles As Integer = calcularnumerodediagonal1(matrizAux)
-
-        matrizAux = CopiarReversoMatrizAux(matrizAux)
-        ' matrizAux(posxInicial, posyInicial) = -1
-
-        ' diagonal /
-        matrizAux = ComprobarDiagonal2(posxInicial, posyInicial)
-        Dim numDiagonal2Posibles As Integer = calcularnumerodediagonal2(matrizAux)
-
-        ' Sumar numero de casos
-        casos = 0
-        casos = numFilasPosibles + numcolunmasPosibles + numDiagonal1Posibles + numDiagonal2Posibles
-        matrizCasosHum(posxInicial, posyInicial) = casos
-        ' guardar posicion maxima
-        If casos > Pmax Then
-            Pmax = casos
-            '    posxMax = posxInicial
-            '    posyMax = posyInicial
-        End If
-        For fila = 0 To UBound(matrizCasosHum)
-            For columna = 0 To UBound(matrizCasosHum, 2)
-                If matrizCasos(fila, columna) = Pmax Then
-                    'guarda posicion caso
-                    '    matrizPosiblesHum(fila, columna) = 5
-                End If
-            Next
-        Next
-
-    End Sub
-
-    Private Function ChequeaGanador(matrizAux(,) As Integer)
-        Dim valor As Integer = 0
-        Dim gana = 0
-
-        ' horizontales
-        For fila = 0 To UBound(matrizAux)
-            For columna = 0 To UBound(matrizAux, 2)
-                valor += matrizAux(fila, columna)
-                If valor = filas Then gana = 100
-                If valor = -(filas) Then gana = -100
-            Next
-            valor = 0
-        Next
-
-        ' verticales
-        For i = 0 To UBound(matrizAux)
-            For j = 0 To UBound(matrizAux, 2)
-                valor += matrizAux(j, i)
-                If valor = filas Then gana = 100
-                If valor = -(filas) Then gana = -100
-            Next
-            valor = 0
-        Next
-
-        'diagonal \
-        valor = 0
-        For i = 0 To UBound(matrizAux)
-            valor += matrizAux(i, i)
-            If valor = filas Then gana = 100
-            If valor = -(filas) Then gana = -100
-        Next
-
-        'diagonal /
-        valor = 0
-        For i = 0 To UBound(matrizAux)
-            Dim n = filas - 1
-            valor += matrizAux(i, n - i)
-            If valor = filas Then gana = 100
-            If valor = -(filas) Then gana = -100
-        Next
-        Return gana
-    End Function
-
-
-
-
-
     Private Function ComprobarDiagonal2(posxInicial As Integer, posyInicial As Integer) As Integer(,)
         ' diagonal /
         Dim n = filas - 1
@@ -467,37 +365,6 @@
                         If fila = (n - columna) Then ' lo meto delante y ahorro en el bucle
                             If matrizAux(fila, columna) = 0 Then
                                 matrizAux(fila, columna) = -1
-                            End If
-                        End If
-                    Next
-                Next
-            End If
-        End If
-        Return matrizAux
-    End Function
-    Private Function ComprobarDiagonal2Hu(posxInicial As Integer, posyInicial As Integer) As Integer(,)
-        ' diagonal /
-        Dim n = filas - 1
-        Dim RellenarDiagonal2 = True
-        If posxInicial = (n - posyInicial) Then
-            For fila As Integer = 0 To UBound(matrizAux)
-                For columna As Integer = 0 To UBound(matrizAux, 2)
-                    Dim aux As Integer = n - columna
-                    If fila = (aux) Then ' lo meto delante y ahorro en el bucle
-                        If matrizAux(fila, columna) = -1 Then
-                            RellenarDiagonal2 = False
-                        End If
-                    End If
-                Next
-            Next
-        End If
-        If RellenarDiagonal2 Then
-            If posxInicial = n - posyInicial Then
-                For fila As Integer = 0 To UBound(matrizAux)
-                    For columna As Integer = 0 To UBound(matrizAux, 2)
-                        If fila = (n - columna) Then ' lo meto delante y ahorro en el bucle
-                            If matrizAux(fila, columna) = 0 Then
-                                matrizAux(fila, columna) = 1
                             End If
                         End If
                     Next
@@ -537,37 +404,6 @@
         End If
         Return matrizAux
     End Function
-    Private Function ComprobarDiagonal1Hu(posxInicial As Integer, posyInicial As Integer) As Integer(,)
-        ' diagonal \
-        Dim RellenarDiagonal1 = True
-        If posxInicial = posyInicial Then
-            For fila As Integer = 0 To UBound(matrizAux)
-                For columna As Integer = 0 To UBound(matrizAux, 2)
-                    If fila = columna Then ' lo meto delante y ahorro en el bucle
-                        If matrizAux(fila, columna) = -1 Then
-                            '       MessageBox.Show("hay x en la diagonal \")
-                            RellenarDiagonal1 = False
-                        End If
-                    End If
-                Next
-            Next
-        End If
-        ' Rellenar diagonal \
-        If RellenarDiagonal1 Then
-            If posxInicial = posyInicial Then
-                For fila As Integer = 0 To UBound(matrizAux)
-                    For columna As Integer = 0 To UBound(matrizAux, 2)
-                        If fila = columna Then ' lo meto delante y ahorro en el bucle
-                            If matrizAux(fila, columna) = 0 Then
-                                matrizAux(fila, columna) = 1
-                            End If
-                        End If
-                    Next
-                Next
-            End If
-        End If
-        Return matrizAux
-    End Function
     Private Function ComprobarColumna(posxInicial As Integer, posyInicial As Integer) As Integer(,)
         Dim RellenarColumna = True
         For fila As Integer = 0 To UBound(matrizAux)
@@ -587,32 +423,6 @@
                     If matrizAux(fila, columna) = 0 Then
                         If columna = posyInicial Then
                             matrizAux(fila, columna) = -1
-                        End If
-                    End If
-                Next
-            Next
-        End If
-        Return matrizAux
-    End Function
-    Private Function ComprobarColumnaHu(posxInicial As Integer, posyInicial As Integer) As Integer(,)
-        Dim RellenarColumna = True
-        For fila As Integer = 0 To UBound(matrizAux)
-            For columna As Integer = 0 To UBound(matrizAux, 2)
-                If columna = posyInicial Then
-                    If matrizAux(fila, columna) = -1 Then
-                        '    MessageBox.Show("hay x en la columna")
-                        RellenarColumna = False
-                    End If
-                End If
-            Next
-        Next
-        ' Se puede rellenar columna
-        If RellenarColumna Then
-            For fila As Integer = 0 To UBound(matrizAux)
-                For columna As Integer = 0 To UBound(matrizAux, 2)
-                    If matrizAux(fila, columna) = 0 Then
-                        If columna = posyInicial Then
-                            matrizAux(fila, columna) = 1
                         End If
                     End If
                 Next
@@ -648,32 +458,7 @@
         End If
         Return matrizAux
     End Function
-    Private Function ComprobarFilaHu(posxInicial As Integer, posyInicial As Integer) As Integer(,)
-        Dim RellenarFila = True
-        For fila As Integer = 0 To UBound(matrizAux)
-            For columna As Integer = 0 To UBound(matrizAux, 2)
-                If fila = posxInicial Then
-                    If matrizAux(fila, columna) = -1 Then
-                        '    MessageBox.Show("hay x en la fila")
-                        RellenarFila = False
-                    End If
-                End If
-            Next
-        Next
-        ' se puede rellenar fila
-        If RellenarFila Then
-            For fila As Integer = 0 To UBound(matrizAux)
-                For columna As Integer = 0 To UBound(matrizAux, 2)
-                    If matrizAux(fila, columna) = 0 Then
-                        If fila = posxInicial Then
-                            matrizAux(fila, columna) = 1
-                        End If
-                    End If
-                Next
-            Next
-        End If
-        Return matrizAux
-    End Function
+
     Private Function CopiarMatrizAux() As Integer(,)
         For fila As Integer = 0 To UBound(matrizTablero)
             For columna As Integer = 0 To UBound(matrizTablero, 2)
@@ -682,6 +467,7 @@
         Next
         Return matrizAux
     End Function
+
     Private Function BorrarMatriz(matriz1(,) As Integer) As Integer(,)
         For fila As Integer = 0 To UBound(matriz1)
             For columna As Integer = 0 To UBound(matriz1, 2)
@@ -689,14 +475,6 @@
             Next
         Next
         Return matriz1
-    End Function
-    Private Function CopiarReversoMatrizAux(matriz2(,) As Integer) As Integer(,)
-        For fila As Integer = 0 To UBound(matriz2)
-            For columna As Integer = 0 To UBound(matriz2, 2)
-                matrizAux(fila, columna) = -matriz2(fila, columna)
-            Next
-        Next
-        Return matrizAux
     End Function
 
     Private Function Calcularnumerodefilas(matrizAux(,) As Integer) As Integer
@@ -706,20 +484,6 @@
             For columna As Integer = 0 To UBound(matrizAux, 2)
                 valor += matrizAux(fila, columna)
                 If valor = -(filas) Then
-                    contador += 1
-                End If
-            Next
-            valor = 0
-        Next
-        Return contador
-    End Function
-    Private Function CalcularnumerodefilasHu(matrizAux(,) As Integer) As Integer
-        Dim valor As Integer = 0
-        Dim contador = 0
-        For fila As Integer = 0 To UBound(matrizAux)
-            For columna As Integer = 0 To UBound(matrizAux, 2)
-                valor += matrizAux(fila, columna)
-                If valor = (filas) Then
                     contador += 1
                 End If
             Next
@@ -978,24 +742,29 @@
     ''' Inicio del juego, elimina panel anterior del juego 
     ''' </summary>
     Public Sub Iniciarjuego()
-        Dim primeravez = True
-
+        primeravez = True
         Nivel_juego()
         Inicializar_datos()
         Crear_panel_juego()
         Crear_card_jugadores()
         Quien_empieza()
         Crear_casillas()
-        'controlar que juega ordenador
+        'controlar que juega ordenador o segundo humano SecondGamer=True --> IA 
+        SecondGamer = Opciones.RadioButtonIA.Checked
+
         If primeravez Then
             If gamer1 Then
-                MessageBox.Show("mueves tu")
                 primeravez = False
+                '  MessageBox.Show("Inicia Jugador 1")
             Else
-                MessageBox.Show("mueves ordenador")
-                PonerFichaIA()
-                Cambiar_jugador()
                 primeravez = False
+                If SecondGamer Then
+                    '     MessageBox.Show("mueve ordenador")
+                    movimientoIA()
+                    Cambiar_jugador()
+                Else
+                    '     MessageBox.Show("Inicia Jugador 2")
+                End If
             End If
         End If
 
@@ -1003,13 +772,6 @@
         PanelBordeJug1.BringToFront()
         PanelBorde_jug2.BringToFront()
 
-    End Sub
-
-    Private Sub PonerFichaIA()
-        If gamer1 Then
-        Else
-            movimientoIA()
-        End If
     End Sub
 
     ''' <summary>
@@ -1121,6 +883,7 @@
         ReDim matrizMaximos(n, n)
         ReDim matrizAux(n, n)
         ReDim matrizPic(n, n)
+        ReDim matrizCasos(n, n)
     End Sub
 
 

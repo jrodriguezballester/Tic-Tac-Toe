@@ -1,5 +1,5 @@
 ﻿Public Class Opciones
-
+    Dim SecondGamer = True
     ''' <summary>
     ''' Cierra Opciones
     ''' </summary>
@@ -104,10 +104,12 @@
 
     Private Sub RadioButtonHumano_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButtonHumano.CheckedChanged
         EliminarOpcionesIA()
+        SecondGamer = True
     End Sub
 
     Private Sub RadioButtonIA_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButtonIA.CheckedChanged
         RellenarOpciones()
+        SecondGamer = False
 
     End Sub
 

@@ -42,3 +42,12 @@ El nombre de las casillas PictureBox +fila +columna que da lugar a su posicion e
 Agregada funcionalidad cuando el usuario selecciona el Radiobuton Ordenador u Humano. Se rellenan automaticamente las opciones del Ordenador.
 
 ![Screenshot](/recursos/captOpcIA.png)
+
+## Version 3.2
+
+Agregada Funcionalidad movimiento de la IA. Falta limpiar muucho codigo, perdida funcionalidad segundo jugador
+
+## Version 4.0
+
+Implementada la funcionalidad del segundo jugador / IA
+Movimiento de la IA consistente en Ganar, No perder y maximas opciones (por ese orden); Se ha intentado implementar la funcion minimax, de la cual hemos dado el primer paso
